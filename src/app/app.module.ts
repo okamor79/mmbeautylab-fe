@@ -23,6 +23,7 @@ import {authInterceptorProviders} from "./helper/auth-interceptor.service";
     FormsModule
   ],
   providers: [authInterceptorProviders],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

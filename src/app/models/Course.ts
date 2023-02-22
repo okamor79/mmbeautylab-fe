@@ -9,8 +9,8 @@ export interface Course {
   daysCountAccess: number;
   courseUrl: string;
   previewUrl: string;
-  avatarUrl: string;
   price: number;
+  avatar?: File;
   discount: number;
   status: string;
 }
