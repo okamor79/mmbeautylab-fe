@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
       this.tokenStrogare.saveUser(data);
 
       this.notification.showSnakBar('Success login');
- //     this.router.navigate(['/']);
+      this.router.navigate(['/']);
       window.location.reload();
     }, error => {
       console.log(error);
