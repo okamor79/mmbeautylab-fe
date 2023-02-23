@@ -1,13 +1,11 @@
 import {Injectable} from '@angular/core';
-import {HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
-import {TokenStorageService} from "../service/token-storage.service";
-import {Observable} from "rxjs";
+import {HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {TokenStorageService} from '../service/token-storage.service';
+import {Observable} from 'rxjs';
 
 const TOKEN_HEADER_KEY = 'Authorization';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthInterceptorService implements HttpInterceptor {
 
   constructor(private tokenService: TokenStorageService) {
@@ -24,7 +22,5 @@ export class AuthInterceptorService implements HttpInterceptor {
 }
 
 export const authInterceptorProviders = [
-  {provide: HTTP_INTERCEPTORS, userClass: AuthInterceptorService, multi: true}
+  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}
 ];
-
-
