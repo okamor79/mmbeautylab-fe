@@ -1,0 +1,21 @@
+.course-card {
+  max-width: 400px;
+  margin: 15px;
+  padding: 2px;
+}
+mat-card-header {
+ padding: 10px;
+
+}
+
+mat-card-title {
+  text-transform: uppercase;
+}
+
+mat-card-content {
+  text-align: justify;
+}
+
+mat-card button {
+  margin-top: 15px;
+}

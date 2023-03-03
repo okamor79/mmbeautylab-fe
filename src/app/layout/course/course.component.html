@@ -1,0 +1,38 @@
+<div class="course-page">
+  <div class="course-info-block">
+    <h1>{{course.courseName}}</h1>
+    <h5>{{course.uniqueCode}}</h5>
+    <p>{{course.description}}</p>
+    <div [innerHTML]="course.fullDescription"></div>
+
+    <p>Вартість курсу:  {{this.course.price}} грн.</p>
+    <div>Курс буде доступний Вам після оплати протягом {{this.course.dayAccess}} днів.</div>
+
+    <div *ngIf="!isLogined" class="course-button">
+      <a (click)="openLoginDialog()">
+        <button mat-raised-button color="flatbutton">Авторизуйтесь</button>
+      </a>
+    </div>
+
+    <div *ngIf="isLogined && !isSaled">
+      <a href="https://www.liqpay.ua/api/3/checkout?data={{this.data}}&signature={{this.signature}}" target="_blank">
+        <button mat-raised-button color="flatbutton">Придбати</button>
+      </a>
+    </div>
+</div>
+
+
+<div class="video-block" *ngIf="(isLogined || !isLogined) && !isSaled">
+  <iframe
+    src="https://player.vimeo.com/video/788310881?h=70c47b53bd&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+    width="800" height="450" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen=""
+    title="Анонс"></iframe>
+</div>
+
+  <div class="video-block" *ngIf="isLogined && isSaled">
+    <iframe src='https://vimeo.com/showcase/10127482/embed' width="1024" height="450" allowfullscreen frameborder='0'
+            ></iframe>
+  </div>
+
+
+</div>

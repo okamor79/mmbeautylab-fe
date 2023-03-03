@@ -1,30 +1,31 @@
 import {Component, OnInit} from '@angular/core';
-import {Form, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../service/auth.service";
 import {TokenStorageService} from "../../service/token-storage.service";
 import {NotificationService} from "../../service/notification.service";
 import {Router} from "@angular/router";
+import {MatDialogRef} from "@angular/material/dialog";
+import {UserService} from "../../service/user.service";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-
-
 export class LoginComponent implements OnInit {
 
   // @ts-ignore
   public loginForm: FormGroup;
 
   constructor(
+    private dialog: MatDialogRef<LoginComponent>,
     private authService: AuthService,
-    private tokenStrogare: TokenStorageService,
-    private notification: NotificationService,
+    private tokenStorage: TokenStorageService,
+    private userService: UserService,
+    private notificationService: NotificationService,
     private router: Router,
     private fb: FormBuilder) {
-
-    if (this.tokenStrogare.getUser()) {
+    if (this.tokenStorage.getUser()) {
       this.router.navigate(['main']);
     }
   }
@@ -35,9 +36,9 @@ export class LoginComponent implements OnInit {
 
   createLoginForm(): FormGroup {
     return this.fb.group({
-      username: ['', Validators.compose([Validators.required])],
-      password: ['', Validators.compose([Validators.required])]
-    })
+      username: ['', Validators.compose([Validators.required, Validators.email])],
+      password: ['', Validators.compose([Validators.required])],
+    });
   }
 
   submit(): void {
@@ -45,16 +46,28 @@ export class LoginComponent implements OnInit {
       username: this.loginForm.value.username,
       password: this.loginForm.value.password
     }).subscribe(data => {
-      this.tokenStrogare.saveToken(data);
-      this.tokenStrogare.saveUser(data);
+      this.tokenStorage.saveToken(data.token);
+      this.tokenStorage.saveUser(data);
 
-      this.notification.showSnakBar('Success login');
       this.router.navigate(['/']);
       window.location.reload();
     }, error => {
       console.log(error);
-      this.notification.showSnakBar(error.message);
-    })
+      this.notificationService.showSnakBar(error.message);
+    });
+  }
+
+  regisreRedirect(): void {
+    this.dialog.close();
+    this.router.navigate(['/register']);
+  }
+
+  // @ts-ignore
+  resetPassword(username): void {
+    this.authService.resetUserPassword(username).subscribe(() => {
+        this.notificationService.showSnakBar("Новий пароль вислано на Вашу скриньку");
+      }
+    )
   }
 
 }

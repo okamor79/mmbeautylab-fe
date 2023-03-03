@@ -4,4 +4,7 @@ export interface User {
   fullName: string;
   phone: string;
 
+  role?: string;
+  authorities?: string[];
+
   }

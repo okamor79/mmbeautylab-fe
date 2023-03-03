@@ -1,1 +1,25 @@
-<p>index works!</p>
+<div class="container">
+
+  <div *ngFor="let course of courses">
+  <mat-card *ngIf="course.status === 'COURSE_ENABLE'" class="course-card">
+
+
+      <img mat-card-image [src]="formatImage(course.avatar)" alt="">
+      <mat-card-header>
+
+        <mat-card-title-group>
+
+          <mat-card-title>{{course.courseName}}</mat-card-title>
+
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content>
+        {{course.description}}
+      </mat-card-content>
+      <mat-card-actions>
+      <button mat-raised-button	 color="flatbutton" routerLink="/course/{{course.id}}" >Детальніше</button>
+      </mat-card-actions>
+
+  </mat-card>
+  </div>
+</div>

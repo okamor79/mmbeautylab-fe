@@ -1,0 +1,35 @@
+.spacer{
+  flex: 1 1 auto;
+}
+
+#menu-item bottom {
+  display: block;
+  margin: 0 auto;
+}
+
+mat-toolbar {
+  color: dimgrey;
+  height: 95px;
+  box-shadow: gray 2px 2px 4px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.header-logo {
+ width: 150px;
+}
+
+mat-icon {
+  transform: scale(1.5);
+}
+
+.icon_menu {
+  color: dimgrey;
+  transform: scale(1);
+}
+
+mat-fab {
+  background-color: white;
+  color: dimgrey;
+}

@@ -1,0 +1,29 @@
+.course-page {
+  margin: 0 auto;
+  display: inline-flex;
+  width: 100%;
+  padding: 25px 140px;
+}
+
+.course-info-block {
+  display: inline;
+  margin-right: 50px;
+  width: 45%;
+}
+.video-block {
+  display: inline;
+}
+
+img {
+  width: 100%;
+}
+
+
+h1 {
+  font-size: 2rem;
+}
+
+.course-button {
+  margin-top: 25px;
+}
+

@@ -11,7 +11,9 @@ export class NotificationService {
   public showSnakBar(message: string): void {
     // @ts-ignore
     this.snakbar.open(message, null, {
-      duration: 2000
+      duration: 10000,
+      horizontalPosition: "center",
+      verticalPosition: "top"
     });
   }
 }

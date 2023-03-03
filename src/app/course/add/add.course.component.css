@@ -1,0 +1,33 @@
+
+.add-course-page {
+  text-align: center;
+  margin-top: 3rem;
+}
+h1 {
+  padding-bottom: 25px;
+}
+
+table{
+  margin: 0 auto;
+}
+#controls {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  width: 40%;
+}
+
+mat-form-field {
+  width: 85%;
+}
+
+.form-table {
+  width: 70%;
+
+}
+.post-image {
+  display: block;
+  margin: 1rem auto;
+  width: 200px;
+  height: 200px;
+}

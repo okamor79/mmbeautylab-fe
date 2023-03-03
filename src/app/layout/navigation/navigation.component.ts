@@ -3,6 +3,8 @@ import {User} from "../../models/User";
 import {TokenStorageService} from "../../service/token-storage.service";
 import {UserService} from "../../service/user.service";
 import {Router} from "@angular/router";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {LoginComponent} from "../../auth/login/login.component";
 
 @Component({
   selector: 'app-navigation',
@@ -11,26 +13,28 @@ import {Router} from "@angular/router";
 })
 export class NavigationComponent implements OnInit {
 
+  isAdmin = false;
   isLoggedIn = false;
-  isDataLoad = false;
+  isDataLoaded = false;
   // @ts-ignore
   user: User;
 
   constructor(private tokenService: TokenStorageService,
               private userService: UserService,
-              private router: Router
-) {
-  }
+              private dialog: MatDialog,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenService.getToken();
-
     if(this.isLoggedIn) {
       this.userService.getCurrentUser()
         .subscribe(data => {
-          console.log(data);
           this.user = data;
-          this.isDataLoad = true;
+          this.isDataLoaded = true;
+          if (this.user && (data.authorities[0].authority) === 'ROLE_ADMIN') {
+            this.isAdmin = true;
+          }
+
         })
     }
   }
@@ -38,6 +42,16 @@ export class NavigationComponent implements OnInit {
   logout(): void {
     this.tokenService.logOut();
     this.router.navigate(['/login']);
+  }
+
+  openLoginDialog(): void {
+    const dialogLoginConfig = new MatDialogConfig();
+    dialogLoginConfig.width = '30%';
+    dialogLoginConfig.height = '32%';
+    dialogLoginConfig.data = {
+
+    };
+    this.dialog.open(LoginComponent,dialogLoginConfig);
   }
 
 }

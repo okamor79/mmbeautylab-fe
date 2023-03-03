@@ -1,14 +1,14 @@
 export interface Course {
   id?: number;
-  uniqCode: string;
-  name: string;
+  uniqueCode: string;
+  courseName: string;
   description: string;
-  fullDescript: string;
+  fullDescription: string;
   startDate: any;
-  finishDate: any;
-  daysCountAccess: number;
+  endDate: any;
+  dayAccess: number;
   courseUrl: string;
-  previewUrl: string;
+  urlCoursePreview: string;
   price: number;
   avatar?: File;
   discount: number;
