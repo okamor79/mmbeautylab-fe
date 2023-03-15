@@ -7,4 +7,7 @@ export interface User {
   role?: string;
   authorities?: string[];
 
+  password?: string;
+  confirmPassword?: string;
+
   }

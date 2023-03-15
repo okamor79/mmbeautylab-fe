@@ -1,1 +1,51 @@
-<p>profile works!</p>
+<div class="profile-page">
+  <h2>Профіль клієнта: {{this.currentUser.fullName}}</h2>
+  <form [formGroup]="profileForm">
+    <div>
+      <div class="justify-content-center">
+        <div>
+          <mat-form-field>
+            <mat-label>Поштова скринька</mat-label>
+            <input matInput disabled="true" value="{{this.currentUser.username}}" >
+          </mat-form-field>
+        </div>
+<!--        <div>-->
+<!--          <mat-form-field appearance="outline">-->
+<!--            <mat-label>Повне ім'я</mat-label>-->
+<!--            <input matInput formControlName="fullName" >-->
+<!--          </mat-form-field>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <mat-form-field appearance="outline">-->
+<!--            <mat-label>Номер мобільного телефону</mat-label>-->
+<!--            <input matInput  [value]="this.currentUser.phone">-->
+<!--          </mat-form-field>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--        <mat-divider></mat-divider>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <mat-form-field appearance="outline">-->
+<!--            <mat-label>Новий пароль</mat-label>-->
+<!--            <input matInput type="password" >-->
+<!--          </mat-form-field>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <mat-form-field appearance="outline">-->
+<!--            <mat-label>Підтвердження нового паролю</mat-label>-->
+<!--            <input matInput type="password" >-->
+<!--          </mat-form-field>-->
+<!--        </div>-->
+        <div id="controls" class="row">
+          <button style="width: 20%" (click)="submit()"  mat-flat-button color="primary">
+            Реєстрація
+          </button>
+          <!--            <a routerLink="/login">Login</a>-->
+
+        </div>
+
+      </div>
+    </div>
+  </form>
+
+</div>

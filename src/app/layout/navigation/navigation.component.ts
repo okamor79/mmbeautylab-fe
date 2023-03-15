@@ -5,6 +5,7 @@ import {UserService} from "../../service/user.service";
 import {Router} from "@angular/router";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {LoginComponent} from "../../auth/login/login.component";
+import {ProfileComponent} from "../profile/profile.component";
 
 @Component({
   selector: 'app-navigation',
@@ -54,4 +55,9 @@ export class NavigationComponent implements OnInit {
     this.dialog.open(LoginComponent,dialogLoginConfig);
   }
 
+  openProfile() {
+    const dialogProfileConfig = new MatDialogConfig();
+    dialogProfileConfig.width = '40%';
+    this.dialog.open(ProfileComponent, dialogProfileConfig);
+  }
 }

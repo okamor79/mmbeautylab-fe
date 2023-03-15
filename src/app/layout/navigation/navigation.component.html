@@ -24,7 +24,7 @@
 
   <mat-menu id="menu-item" #menu="matMenu" >
     <button *ngIf="isAdmin" mat-menu-item routerLink="/admin"><mat-icon class="icon_menu">settings_suggest</mat-icon>Керування</button>
-    <button mat-menu-item routerLink="/main"><mat-icon class="icon_menu">badge</mat-icon>Профіль</button>
+    <button mat-menu-item (click)="openProfile()" ><mat-icon class="icon_menu">badge</mat-icon>Профіль</button>
 
     <button (click)="logout()" mat-menu-item>
       <mat-icon class="icon_menu">logout</mat-icon>Вихід

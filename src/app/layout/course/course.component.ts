@@ -28,6 +28,7 @@ export class CourseComponent implements OnInit {
   isLogined = false;
 
   isSaled = false;
+  countExpire = 0;
 
   //@ts-ignore
   data: string;
@@ -53,11 +54,9 @@ export class CourseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.isLogined)
     if (window.sessionStorage.getItem('auth-user')) {
       this.isLogined = true;
     }
-    console.log(this.isLogined)
     this.courseService.courseInfo(this.courseId).subscribe(
       data => {
         this.course = data;
@@ -70,6 +69,7 @@ export class CourseComponent implements OnInit {
           if (this.isLogined === true) {
             this.saleService.checkCourseSale(id).subscribe(data => {
               this.isSaled = data;
+              this.saleService.expireCountDay(id).subscribe(data => this.countExpire=data)
               if (data === false) {
                 this.courseService.generateButton(id).subscribe(d => {
                     this.data = d.data;

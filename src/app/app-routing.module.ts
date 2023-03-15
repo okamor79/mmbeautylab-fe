@@ -10,6 +10,8 @@ import {AdminComponent} from "./layout/admin/admin.component";
 import {AddCourseComponent} from "./course/add/add.course.component";
 import {CourseComponent} from "./layout/course/course.component";
 import {AuthGuardService} from "./helper/auth-guard.service";
+import {EditComponent} from "./course/edit/edit.component";
+import {ProfileComponent} from "./layout/profile/profile.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -21,7 +23,9 @@ const routes: Routes = [
   {path: 'add-course', component: AddCourseComponent, canActivate: [AuthGuardService]},
   {path: 'course/:id', component: CourseComponent},
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuardService]},
-   {path: '', redirectTo: 'main', pathMatch: 'full'}
+  {path: 'course/edit/:id', component: EditComponent, canActivate: [AuthGuardService]},
+  {path: 'profile', component: ProfileComponent,canActivate: [AuthGuardService]},
+  {path: '', redirectTo: 'main', pathMatch: 'full'}
 ];
 
 @NgModule({

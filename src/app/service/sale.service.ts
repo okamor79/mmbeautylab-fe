@@ -24,4 +24,8 @@ export class SaleService {
     return this.http.get(urlAPI + id + '/check');
   }
 
+  expireCountDay(id: any): Observable<any> {
+    return this.http.get(urlAPI + id + '/expire');
+  }
+
   }

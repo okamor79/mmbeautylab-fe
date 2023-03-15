@@ -1,12 +1,13 @@
 <div class="course-page">
   <div class="course-info-block">
     <h1>{{course.courseName}}</h1>
-    <h5>{{course.uniqueCode}}</h5>
+    <h5  *ngIf="isLogined && !isSaled">{{course.uniqueCode}}</h5>
     <p>{{course.description}}</p>
     <div [innerHTML]="course.fullDescription"></div>
 
-    <p>Вартість курсу:  {{this.course.price}} грн.</p>
-    <div>Курс буде доступний Вам після оплати протягом {{this.course.dayAccess}} днів.</div>
+    <p  *ngIf="isLogined && !isSaled">Вартість курсу:  {{this.course.price}} грн.</p>
+    <div *ngIf="isLogined && !isSaled">Курс буде доступний Вам після оплати протягом {{this.course.dayAccess}} днів.</div>
+    <div *ngIf="isLogined && isSaled">Курс доступний Вам до перегляду протягом наступних <strong>{{this.countExpire}}</strong> дні.</div>
 
     <div *ngIf="!isLogined" class="course-button">
       <a (click)="openLoginDialog()">

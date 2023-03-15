@@ -6,6 +6,7 @@ import {NotificationService} from "../../service/notification.service";
 import {Router} from "@angular/router";
 import {MatDialogRef} from "@angular/material/dialog";
 import {UserService} from "../../service/user.service";
+import {User} from "../../models/User";
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   // @ts-ignore
   public loginForm: FormGroup;
+
 
   constructor(
     private dialog: MatDialogRef<LoginComponent>,
